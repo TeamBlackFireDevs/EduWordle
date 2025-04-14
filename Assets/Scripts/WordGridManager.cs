@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class WordGridManager : MonoBehaviour {
 
-    public const string NUMBEROFPUZZLESPLAYED = "NUMBERPUZZLES", NUMBERWINS = "NUMBERWIN", WIN1 = "WIN1", WIN2 = "WIN2", WIN3 = "WIN3", WIN4 = "WIN4", WIN5 = "WIN5", WIN6 = "WIN6", CURRENTSTREAK = "CURRENTSTREAK", LARGESTSTREAK = "LARGESTSTREAK", HARDMODE = "HARDMODE", DICTIONARYCHECK = "DICTIONARYCHECK", MONTH = "MONTH", DAY = "DAY", YEAR = "YEAR", SELECTEDLENGTH = "SELECTEDLENGTH1", NUMBEROFGUESSES = "NUMBEROFGUESSES";
+    public const string NUMBEROFPUZZLESPLAYED = "NUMBERPUZZLES", NUMBERWINS = "NUMBERWIN", WIN1 = "WIN1", WIN2 = "WIN2", WIN3 = "WIN3", WIN4 = "WIN4", WIN5 = "WIN5", WIN6 = "WIN6", CURRENTSTREAK = "CURRENTSTREAK", LARGESTSTREAK = "LARGESTSTREAK", HARDMODE = "HARDMODE", DICTIONARYCHECK = "DICTIONARYCHECK", MONTH = "MONTH", DAY = "DAY", YEAR = "YEAR", SELECTEDLENGTH = "SELECTEDLENGTH1", NUMBEROFGUESSES = "NUMBEROFGUESSES", SOUNDVOL = "SOUNDVOL", MUSICVOL = "MUSICVOL";
 
 
 
@@ -43,6 +43,9 @@ public class WordGridManager : MonoBehaviour {
     bool showingError = false;
 
     public HashSet<char> necessaryCharacter = new HashSet<char>();
+
+    public GameObject yellowKeySound, greenKeySound;
+    public AudioSource winSound, loseSound;
 
     private void Awake() {
         greenEmoji = char.ConvertFromUtf32(0x1F7E9);
@@ -258,10 +261,14 @@ public class WordGridManager : MonoBehaviour {
             if (inputString[i] == currentWord[i]) {
                 currentButton.SetCorrect(inputString[i]);
                 keyboard.GreenChar(inputString[i]);
+                Instantiate(greenKeySound);
+                //greenKeySound.Play();
                 necessaryCharacter.Add(inputString[i]);
             } else if (currentWord.Contains(inputString[i]) && YellowCheck(inputString, i)) {
                 currentButton.SetSemiCorrect(inputString[i]);
                 keyboard.YellowChar(inputString[i]);
+                Instantiate(yellowKeySound);
+                //yellowKeySound.Play();
                 necessaryCharacter.Add(inputString[i]);
             } else {
                 currentButton.SetMissing(inputString[i]);
@@ -284,10 +291,12 @@ public class WordGridManager : MonoBehaviour {
         if (inputString == currentWord) {
            
             controller.ChangeState(new WinState(true));
+            winSound.Play();
         } else if (currentRow < GameMasterManager.numberOfGuesses) {
             controller.ChangeState(new EnterWordState());
         } else {
             controller.ChangeState(new WinState(false));
+            loseSound.Play();
         }
         
     }
@@ -369,6 +378,21 @@ public class WordGridManager : MonoBehaviour {
 
     public int GetInt(string s) {
         return PlayerPrefs.GetInt(s);
+    }
+
+    public void SetFloat(string s, float val)
+    {
+        PlayerPrefs.SetFloat(s, val);
+    }
+
+    public bool HasFloat(string s)
+    {
+        return PlayerPrefs.HasKey(s);
+    }
+
+    public float GetFloat(string s)
+    {
+        return PlayerPrefs.GetFloat(s);
     }
 
 

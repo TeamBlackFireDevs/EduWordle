@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class GameMasterManager : MonoBehaviour
@@ -18,6 +19,9 @@ public class GameMasterManager : MonoBehaviour
     public bool DailyDisabled = false;
     public Button dailyButton;
     public GameObject Tutorial;
+    public AudioMixer audioMixer;
+
+    public Slider soundSlider, musicSlider;
 
 
     public void Quit() {
@@ -32,6 +36,18 @@ public class GameMasterManager : MonoBehaviour
         } else if (Application.platform != RuntimePlatform.WindowsEditor && Application.platform != RuntimePlatform.OSXEditor && Application.platform != RuntimePlatform.LinuxEditor) {
             //scaler.matchWidthOrHeight = 1;
         }
+
+        if(!gridManger.HasFloat(WordGridManager.SOUNDVOL)) { gridManger.SetFloat(WordGridManager.SOUNDVOL, 1f); }
+        if(!gridManger.HasFloat(WordGridManager.MUSICVOL)) { gridManger.SetFloat(WordGridManager.MUSICVOL, 0.5f); }
+
+
+        float sound = gridManger.GetFloat(WordGridManager.SOUNDVOL);
+        float music = gridManger.GetFloat(WordGridManager.MUSICVOL);
+        SetSoundVol(sound);
+        SetMusicVol(music);
+
+        soundSlider.value = sound;
+        musicSlider.value = music;
 
         if (!gridManger.HasInt(WordGridManager.SELECTEDLENGTH)) gridManger.SetInt(WordGridManager.SELECTEDLENGTH, 1);
         if (!gridManger.HasInt(WordGridManager.NUMBEROFGUESSES)) gridManger.SetInt(WordGridManager.NUMBEROFGUESSES, 5);
@@ -287,6 +303,23 @@ public class GameMasterManager : MonoBehaviour
 
     }
 
+    public void SetSoundVol(float vol)
+    {
+        float db = 20.0f * Mathf.Log10(vol);
+        if(vol == 0f) { db = -80f; }
+        audioMixer.SetFloat("SoundVol", db);
+
+        gridManger.SetFloat(WordGridManager.SOUNDVOL, vol);
+    }
+
+    public void SetMusicVol(float vol)
+    {
+        float db = 20.0f * Mathf.Log10(vol);
+        if (vol == 0f) { db = -80f; }
+        audioMixer.SetFloat("MusicVol", db);
+
+        gridManger.SetFloat(WordGridManager.MUSICVOL, vol);
+    }
 
 
     public void SetHardMode(bool b) {
@@ -296,6 +329,7 @@ public class GameMasterManager : MonoBehaviour
     public void SetDict(bool b) {
         gridManger.SetBool(WordGridManager.DICTIONARYCHECK, b);
     }
+
 
     public void InitializeStringVars(List<string> s) {
         foreach (string ss in s) {
