@@ -253,7 +253,7 @@ namespace CanvasKeyboard {
         public void EmptyChar(char c) {
             foreach (KeyboardRow r in rows) {
                 foreach (KeyboardKey k in r.keys) {
-                    if (k.keyData.normalChar == c) {
+                    if (k.keyData.normalChar == c && k.GetKeyColor() == WordColors.instance.LIGHTGREY) {
                         k.SetNone();
                     }
                 }
@@ -263,7 +263,7 @@ namespace CanvasKeyboard {
         public void YellowChar(char c) {
             foreach (KeyboardRow r in rows) {
                 foreach (KeyboardKey k in r.keys) {
-                    if (k.keyData.normalChar == c) {
+                    if (k.keyData.normalChar == c && k.GetKeyColor() == WordColors.instance.LIGHTGREY) {
                         k.SetYellow();
                     }
                 }

@@ -92,6 +92,11 @@ namespace CanvasKeyboard {
             image.color = WordColors.instance.GREY;
         }
 
+        public Color GetKeyColor()
+        {
+            return image.color;
+        }
+
     }
 
 
