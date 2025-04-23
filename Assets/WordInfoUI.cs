@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class WordInfoUI : MonoBehaviour
 {
-    public TMP_Text wordText, titleText, infoText;
+    public TMP_Text wordText, titleText, infoText, hintText;
     int showState = 0;
 
     public WordInfoGrabber grabber;
@@ -21,9 +21,12 @@ public class WordInfoUI : MonoBehaviour
 
     public async void AcceptNewWord(string word)
     {
+        hintText.gameObject.SetActive(false);
         showState = 0;
         wordText.text = word;
         wordInfo = await grabber.GetWordInfo(word);
+
+        hintText.text = wordInfo.Hint;
 
         UpdateWordInfo();
     }
@@ -75,5 +78,10 @@ public class WordInfoUI : MonoBehaviour
     {
         wordInfoPanel.SetActive(false);
         winScreen.SetActive(true);
+    }
+
+    public void ShowHint()
+    {
+        hintText.gameObject.SetActive(true);
     }
 }
