@@ -8,10 +8,7 @@ EduWordle is an educational twist on the classic Wordle game, designed to make l
 - 🤖 **Powered by DeepSeek AI** — Get accurate and context-aware word explanations thanks to AI integration.
 - 🎨 **Clean & Responsive UI** — Smooth experience on both desktop and mobile devices.
 
-Architecture Diagram for this game:
 
-
-![image](https://github.com/user-attachments/assets/1ed0d176-a10b-43b1-8f65-e30b1fcb3357)
 
 **Gameplay ScreenShots:**
 
