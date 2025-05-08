@@ -1,5 +1,6 @@
 # EduWordle
 Word based game to help children improve their vocabulary.
+
 Architecture Diagram for this game:
 ![image](https://github.com/user-attachments/assets/1ed0d176-a10b-43b1-8f65-e30b1fcb3357)
 
