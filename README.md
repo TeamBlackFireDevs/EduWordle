@@ -1,5 +1,12 @@
 # EduWordle
-Word based game to help children improve their vocabulary.
+EduWordle is an educational twist on the classic Wordle game, designed to make learning fun and interactive! This project aims to improve vocabulary and subject knowledge across various academic fields while keeping the gameplay engaging and rewarding.
+
+## 🚀 Features
+
+- 🔤 **English Vocabulary Challenges** — Guess subject-based English words within limited attempts.
+- 🧠 **Instant Learning** — After each round, get word meanings and fun facts to build your vocabulary.
+- 🤖 **Powered by DeepSeek AI** — Get accurate and context-aware word explanations thanks to AI integration.
+- 🎨 **Clean & Responsive UI** — Smooth experience on both desktop and mobile devices.
 
 Architecture Diagram for this game:
 
