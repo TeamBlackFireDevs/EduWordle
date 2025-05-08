@@ -2,9 +2,13 @@
 Word based game to help children improve their vocabulary.
 
 Architecture Diagram for this game:
+
+
 ![image](https://github.com/user-attachments/assets/1ed0d176-a10b-43b1-8f65-e30b1fcb3357)
 
 **Gameplay ScreenShots:**
+
+
 ![image](https://github.com/user-attachments/assets/02c9f689-b5a9-4d60-a90f-b83430633e64)
 
 ![image](https://github.com/user-attachments/assets/9430b9b9-d216-4e72-aa92-fdcf37a570c8)
