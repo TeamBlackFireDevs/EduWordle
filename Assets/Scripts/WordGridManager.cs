@@ -27,6 +27,7 @@ public class WordGridManager : MonoBehaviour {
     public List<GuessDistributionBar> bars = new List<GuessDistributionBar>();
     public GameObject winScreen;
     public WordInfoUI wordInfoUI;
+    public GameObject hintScreen;
     public GameObject guessDistribution;
     public TextMeshProUGUI NumTotal, winPercentText, currentStreakText, largestStreakText, winTitle, lossText;
     public float winLingerTime = 1f;
@@ -85,6 +86,7 @@ public class WordGridManager : MonoBehaviour {
         
         currentWord = s;
         winScreen.SetActive(false);
+        hintScreen.SetActive(true);
         BackToWinScreenButton.SetActive(false);
         vertGroup.enabled = true;
         
@@ -541,6 +543,7 @@ public class WinState : State<WordGridManager> {
             child.gameObject.SetActive(false);
         }
         obj.target.wordInfoUI.wordInfoPanel.SetActive(true);
+        obj.target.hintScreen.SetActive(false);
         //obj.target.winScreen.SetActive(true);
 
         obj.target.BackToWinScreenButton.SetActive(false);

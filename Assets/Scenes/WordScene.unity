@@ -6680,7 +6680,7 @@ GameObject:
   - component: {fileID: 481075095}
   - component: {fileID: 481075094}
   m_Layer: 5
-  m_Name: Image
+  m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13777,7 +13777,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.07058824, g: 0.07058824, b: 0.07450981, a: 1}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -27055,6 +27055,7 @@ MonoBehaviour:
   - {fileID: 291536892}
   winScreen: {fileID: 1301024596}
   wordInfoUI: {fileID: 2133635668}
+  hintScreen: {fileID: 936275753}
   guessDistribution: {fileID: 564205606}
   NumTotal: {fileID: 6009941004701497241}
   winPercentText: {fileID: 1752558041}
